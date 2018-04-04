@@ -17,4 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['web'])->get('/login', function(){
+    return view('login');
+});
+Route::middleware(['web', 'session.guest'])->group(function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/article/lists', 'ArticleController@lists')->name('article');
+});
