@@ -23,5 +23,8 @@ Route::middleware(['web'])->get('/login', function(){
 });
 Route::middleware(['web', 'session.guest'])->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/article/lists', 'ArticleController@lists')->name('article');
+    Route::get('/article/lists', 'Admin\ArticleController@lists')->name('lists');
+    Route::get('/article/add', 'Admin\ArticleController@add')->name('add');
+    Route::post('/article/save', 'Admin\ArticleController@save')->name('save');
+    Route::get('/article/detail', 'Admin\ArticleController@detail')->name('detail');
 });
