@@ -18,7 +18,7 @@ class SessionGuest
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect('/admin/login');
         }
 
         return $next($request);
