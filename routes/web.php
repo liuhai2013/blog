@@ -11,20 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/article', 'HomeController@detail');
 
 Auth::routes();
 
 
-Route::middleware(['web'])->get('/login', function(){
+Route::middleware(['web', 'guest'])->prefix('admin')->get('/login', function(){
     return view('login');
 });
-Route::middleware(['web', 'session.guest'])->group(function(){
-    Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['web', 'session.guest'])->prefix('admin')->group(function(){
     Route::get('/article/lists', 'Admin\ArticleController@lists')->name('lists');
-    Route::get('/article/add', 'Admin\ArticleController@add')->name('add');
-    Route::post('/article/save', 'Admin\ArticleController@save')->name('save');
+    Route::get('/article/add', 'Admin\ArticleController@add')->name('article-add');
+    Route::post('/article/save', 'Admin\ArticleController@save')->name('article-save');
     Route::get('/article/detail', 'Admin\ArticleController@detail')->name('detail');
+    Route::get('/article/category', 'Admin\ArticleController@category')->name('category');
+    Route::get('/article/category-list', 'Admin\ArticleController@categoryList')->name('category-list');
+    Route::post('/article/category-save', 'Admin\ArticleController@categorySave')->name('category-save');
 });

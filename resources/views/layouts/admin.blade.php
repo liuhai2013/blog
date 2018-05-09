@@ -72,7 +72,11 @@
                             <ul class="nav nav-second-level in">
                                 <li><a href="{{ route('lists') }}"><i class="fa fa-th-large"></i><span class="submenu-title">文章列表</span></a>
                                 </li>
-                                <li><a href="{{ route('add') }}"><i class="fa fa-tablet"></i><span class="submenu-title">文章新增</span></a>
+                                <li><a href="{{ route('article-add') }}"><i class="fa fa-tablet"></i><span class="submenu-title">文章新增</span></a>
+                                </li>
+                                <li><a href="{{ route('category') }}"><i class="fa fa-tablet"></i><span class="submenu-title">分类新增</span></a>
+                                </li>
+                                <li><a href="{{ route('category-list') }}"><i class="fa fa-tablet"></i><span class="submenu-title">分类列表</span></a>
                                 </li>
                             </ul>
                         </li>
